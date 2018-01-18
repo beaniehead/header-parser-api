@@ -30,33 +30,31 @@ router.get('/:time', (req, res) => {
       const year = date.getFullYear();
       const day = `0${date.getDate()}`.slice(-2);
       const natural = `${month} ${day}, ${year}`;
-      console.log(JSON.stringify(year).slice(2,3));
-      //checking if a year is a leap year 
-      if(month=="February" && day==29 && year%4==0){
-        
-        if(year%100==0 && year%400!=0){
+      console.log(JSON.stringify(year).slice(2, 3));
+      //checking if a year is a leap year - divisible by 4
+      if (month == "February" && day == 29 && year % 4 == 0) {
+        //leap years occur every 4 years, except for years divisible by 100 and not divisible by 400
+        if (year % 100 == 0 && year % 400 != 0) {
           response = {
-        unix: null,
-        natural: null
-      }
-           } else {
-           response = {
-        unix,
-        natural
-      }
-           }
-      response = {
-        unix,
-        natural
-      }
+            unix: null,
+            natural: null
+          }
+        } else {
+          response = {
+            unix,
+            natural
+          }
+        }
+        response = {
+          unix,
+          natural
+        }
       } else {
-      response = {
-        unix: null,
-        natural: null
+        response = {
+          unix: null,
+          natural: null
+        }
       }
-      }
-      
-      
     }
   }
   //need to convert number strings to numbers to make them work otherwise they return a weird date
