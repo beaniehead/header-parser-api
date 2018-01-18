@@ -25,7 +25,7 @@ router.get('/:time', (req, res) => {
       }
     } else { // date is valid
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-      const unix = date.getTime() / 1000;
+      const unix = Math.floor(date.getTime() / 1000);
       const month = months[date.getMonth()];
       const year = date.getFullYear();
       const day = `0${date.getDate()}`.slice(-2);
