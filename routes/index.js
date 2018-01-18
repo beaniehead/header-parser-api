@@ -30,24 +30,16 @@ router.get('/:time', (req, res) => {
       const year = date.getFullYear();
       const day = `0${date.getDate()}`.slice(-2);
       const natural = `${month} ${day}, ${year}`;
-      console.log(day);
-      console.log(typeof day);
-      if(month=="August"&&day==13&&year==1983){
-        console.log("Willy T");
-        res.sendFile("birthday.html");
-        
+      if (month == "August" && day == "13") {
+        response = "Birthday";
       } else {
-      response = {
-        unix,
-        natural
-      };
+        response = {
+          unix,
+          natural
+        };
       }
-      
-      
     }
   }
-  
-
   //need to convert number strings to numbers to make them work otherwise they return a weird date
   if (enteredTime.toLowerCase() == "now") {
     processTime(new Date(Date.now()));
@@ -56,6 +48,10 @@ router.get('/:time', (req, res) => {
   } else {
     processTime(new Date(enteredTime));
   }
-  res.send(response);
+  if (response == "Birthday") {
+    res.sendFile(process.cwd() + '/views/birthday.html');
+  } else {
+    res.send(response);
+  }
 });
 module.exports = router;
