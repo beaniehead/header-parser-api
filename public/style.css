@@ -22,11 +22,17 @@ ol {
 }
 ul {
 	list-style-type: none;
+  display:inline-block;
+  margin:0;
 }
 
 ul >li {
-background-color:pink;
+background-color:#ddd;
+  padding:5px 5px 5px 5px;
+  margin-bottom:5px;
   color:blue;
+  text-align:left;
+  white-space:nowrap;
 }
 
 a {
