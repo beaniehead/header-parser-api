@@ -16,13 +16,14 @@ router.get('/:time', (req, res) => {
   const enteredTime = req.params.time;
 
   function processTime(date) {
+    const nulled = {
+    unix:null,
+      natural:null
+    }
     //define whether input is natural language or numbers (see if it has anything other than numbers or is just a number)
     if (isNaN(date.getTime())) { // d.valueOf() could also work
       // date is not valid
-      response = {
-        unix: null,
-        natural: null
-      }
+      response = nulled;
     } else { // date is valid
       const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
       const unix = date.getTime() / 1000;
@@ -30,30 +31,21 @@ router.get('/:time', (req, res) => {
       const year = date.getFullYear();
       const day = `0${date.getDate()}`.slice(-2);
       const natural = `${month} ${day}, ${year}`;
-      console.log(JSON.stringify(year).slice(2, 3));
+      const valid = {
+      unix,
+        natural
+      }
       //checking if a year is a leap year - divisible by 4
       if (month == "February" && day == 29 && year % 4 == 0) {
         //leap years occur every 4 years, except for years divisible by 100 and not divisible by 400
         if (year % 100 == 0 && year % 400 != 0) {
-          response = {
-            unix: null,
-            natural: null
-          }
+          console.log(day);
+          response = nulled;
         } else {
-          response = {
-            unix,
-            natural
-          }
-        }
-        response = {
-          unix,
-          natural
+          response = valid;
         }
       } else {
-        response = {
-          unix: null,
-          natural: null
-        }
+      response = valid;
       }
     }
   }
