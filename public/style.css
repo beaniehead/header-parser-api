@@ -35,6 +35,10 @@ background-color:#ddd;
   white-space:nowrap;
 }
 
+.userInput{
+  color:#b20000
+}
+
 a {
 	color: #2574A9;
 }
