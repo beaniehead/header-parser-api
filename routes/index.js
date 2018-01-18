@@ -30,13 +30,33 @@ router.get('/:time', (req, res) => {
       const year = date.getFullYear();
       const day = `0${date.getDate()}`.slice(-2);
       const natural = `${month} ${day}, ${year}`;
-      
-      if(month=="February" && day=29 && )
-      
+      console.log(JSON.stringify(year).slice(2,3));
+      //checking if a year is a leap year 
+      if(month=="February" && day==29 && year%4==0){
+        
+        if(year%100==0 && year%400!=0){
+          response = {
+        unix: null,
+        natural: null
+      }
+           } else {
+           response = {
+        unix,
+        natural
+      }
+           }
       response = {
         unix,
         natural
       }
+      } else {
+      response = {
+        unix: null,
+        natural: null
+      }
+      }
+      
+      
     }
   }
   //need to convert number strings to numbers to make them work otherwise they return a weird date
