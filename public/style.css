@@ -24,6 +24,11 @@ ul {
 	list-style-type: none;
 }
 
+ul >li {
+background-color:pink;
+  color:blue;
+}
+
 a {
 	color: #2574A9;
 }
