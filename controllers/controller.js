@@ -1,4 +1,5 @@
 const userAgentParser = require("useragent");
+const moment = require("moment");
 
 exports.whoAmI = (req, res) => {
   const data = req.headers;
@@ -9,9 +10,10 @@ exports.whoAmI = (req, res) => {
   const language = req.headers['accept-language'].split(",")[0];
   
   const software = req.headers['user-agent'].split("(")[1].split(")")[0];
-  
+  const time = moment().format("YYYY MMMM D, hh:mm:ss");
   const parsed = {
   ipaddress,
+    time,
     browser,
     operating_system,
     software,
