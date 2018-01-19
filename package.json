@@ -3,7 +3,10 @@
   "dependencies": {
     "express": "^4.16.2",
     "useragent":"^2.2.1",
-    "moment":"^2.0.0"
+    "moment":"^2.0.0",
+    "moment-timezone":"0.5.14",
+    "satelize":"0.2.0"
+    
 
   },
   "main": "server.js",
