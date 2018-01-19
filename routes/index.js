@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const controller = require("../controllers/controller");
+
 router.get('/_api/package.json', (req, res, next) => {
   console.log('requested');
   fs.readFile('./package.json', (err, data) => {
@@ -11,43 +13,5 @@ router.get('/_api/package.json', (req, res, next) => {
 router.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/views/index.html');
 });
-router.get('/:time', (req, res) => {
-  var response;
-  const enteredTime = req.params.time;
-
-  function processTime(date) {
-    //define whether input is natural language or numbers (see if it has anything other than numbers or is just a number)
-    if (isNaN(date.getTime())) { // d.valueOf() could also work
-      // date is not valid
-      response = {
-        unix: null,
-        natural: null
-      }
-    } else { // date is valid
-      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-      const unix = Math.floor(date.getTime() / 1000);
-      const month = months[date.getMonth()];
-      const year = date.getFullYear();
-      const day = `0${date.getDate()}`.slice(-2);
-      const natural = `${month} ${day}, ${year}`;
-       
-        response = {
-          unix,
-          natural
-        };
-      
-    }
-  }
-  //need to convert number strings to numbers to make them work otherwise they return a weird date
-  if (enteredTime.toLowerCase() == "now") {
-    processTime(new Date(Date.now()));
-  } else if (!isNaN(+enteredTime)) {
-    processTime(new Date(+enteredTime * 1000));
-  } else {
-    processTime(new Date(enteredTime));
-  }
-  
-    res.send(response);
-  
-});
+router.get('/whoami', controller.whoAmI);
 module.exports = router;
