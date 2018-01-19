@@ -2,12 +2,10 @@
   "name": "timestamp-microservice",
   "dependencies": {
     "express": "^4.16.2",
-    "useragent":"^2.2.1",
-    "moment":"^2.0.0",
-    "moment-timezone":"0.5.14",
-    "satelize":"0.2.0"
-    
-
+    "useragent": "^2.2.1",
+    "moment": "^2.20.1",
+    "moment-timezone": "0.5.14",
+    "satelize": "0.2.0"
   },
   "main": "server.js",
   "scripts": {
@@ -18,6 +16,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/beaniehead/time-stamp.git"
+    "url": "https://github.com/beaniehead/header-parser-api.git"
   }
 }
