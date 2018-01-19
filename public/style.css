@@ -22,17 +22,15 @@ ol {
 }
 ul {
 	list-style-type: none;
-  display:inline-block;
-  margin:0;
+  margin-right:40px;
 }
 
 ul >li {
-background-color:#ddd;
-  padding:5px 5px 5px 5px;
+  background-color:#ddd;
+  padding:5px 5px 5px 20px;
   margin-bottom:5px;
   color:blue;
   text-align:left;
-  white-space:nowrap;
 }
 
 .userInput{

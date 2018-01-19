@@ -10,10 +10,9 @@ exports.whoAmI = (req, res) => {
   const operating_system = userAgentParser.parse(userAgent).os.toString();
   const language = req.headers['accept-language'].split(",")[0];
   const software = req.headers['user-agent'].split("(")[1].split(")")[0];
-  const zone = sat.satelize({ip: ipaddress}, (err, pl) =>  pl.timezone
-  });
-  const time = timezone.tz(zone).format("hh:mm:ss");
-  const date = timezone.tz(zone).format("ddd, YYYY-MM-DD");
+  const zone = sat.satelize({ip: ipaddress}, (err, pl) =>  pl.timezone);
+  const time = timezone.tz(zone).format("HH:mm:ss");
+  const date = timezone.tz(zone).format("dddd, MMM Do, YYYY (YYYY-MM-DD)");
   const parsed = {
     ipaddress,
     date,
