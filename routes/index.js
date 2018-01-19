@@ -10,8 +10,11 @@ router.get('/_api/package.json', (req, res, next) => {
     res.type('txt').send(data.toString());
   });
 });
-router.get('/', (req, res) => {
+
+router.get('/test', (req, res) => {
   res.sendFile(process.cwd() + '/views/index.html');
 });
-router.get('/whoami', controller.whoAmI);
+
+router.get('/', controller.whoAmI);
+
 module.exports = router;
