@@ -10,10 +10,12 @@ exports.whoAmI = (req, res) => {
   const language = req.headers['accept-language'].split(",")[0];
   
   const software = req.headers['user-agent'].split("(")[1].split(")")[0];
-  const time = moment().format("YYYY MMMM D, hh:mm:ss");
+  
+  console.log(req);
   const parsed = {
   ipaddress,
-    time,
+   
+   
     browser,
     operating_system,
     software,
