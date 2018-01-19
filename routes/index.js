@@ -11,10 +11,10 @@ router.get('/_api/package.json', (req, res, next) => {
   });
 });
 
-router.get('/test', (req, res) => {
+router.get('/', (req, res) => {
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
-router.get('/', controller.whoAmI);
+router.get('/whoami', controller.whoAmI);
 
 module.exports = router;
